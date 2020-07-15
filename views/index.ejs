@@ -6,7 +6,7 @@
   
 </head>
 
-<body>
+<body style="overflow: hidden;" class="example">
     <div class="wrapper">
         <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
             <!--
@@ -15,29 +15,29 @@
         Tip 2: you can also add an image using data-image tag
     -->
             <div class="sidebar-wrapper">
-                <div class="logo">
+                <div class="logo" style="border: 0.5px groove wheat;">
                     <a href="javascript:;" class="simple-text">
-                        hello 
+                        Welcome <%=name%>
                     </a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="">
                             <i class="nc-icon nc-icon nc-paper-2"></i>
-                            <p>First example</p>
+                            <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Second example</p>
+                            <p>Edit profile</p>
                         </a>
                     </li>
 
                     <li class="nav-item active active-pro">
                         <a class="nav-link active" href="javascript:;">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade plan</p>
+                            <i class="nc-icon nc-alien-33" style="color: white;"></i>
+                            <p style="color: white;">Upgrade plan</p>
                         </a>
                     </li>
                 </ul>
@@ -47,17 +47,17 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo">Template</a>
+                    <a class="navbar-brand";" href="#pablo"></a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                       
+                        
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="#pablo" style="color: #333131">
                                     <span class="no-icon">Account</span>
                                 </a>
                             </li>
@@ -66,7 +66,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="no-icon">Dropdown</span>
+                                    <span class="no-icon" style="color: #333131">Settings</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -80,12 +80,16 @@
             </nav>
             <!-- End Navbar -->
             <div class="content">
+                <p id="popup1"><% if(messages.error){%>
+                    <%= messages.error %>
+                    <%} %></p>
                 <div class="container-fluid">
-                    <div class="section">
-                    </div>
+                    <form action="/admin" method="GET">
+                        <button  type="submit" >switch to Admin Portal</button> 
+                      </form>
                 </div>
             </div>
-            <footer class="footer">
+            <footer class="footer" style="border: none; height: 65px;">
                 <div class="container-fluid">
                     <nav>
                         <ul class="footer-menu">
@@ -111,11 +115,11 @@
                             </li>
                         </ul>
                         <p class="copyright text-center">
+                            SabariRS
                             ©
                             <script>
                                 document.write(new Date().getFullYear())
                             </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                         </p>
                     </nav>
                 </div>

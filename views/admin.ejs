@@ -14,18 +14,13 @@
   <link href="../public/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   
- 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
+      <div class="logo"><a class="simple-text logo-normal">
           Admin Dashboard
         </a></div>
       <div class="sidebar-wrapper">
@@ -33,11 +28,11 @@
           <li class="nav-item active  ">
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p>ManageUsers</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" action="/" method="GET">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
@@ -78,22 +73,20 @@
               <p>RTL Support</p>
             </a>
           </li>
+          
           <li class="nav-item active-pro ">
-            <a class="nav-link" href="./upgrade.html">
-              <i class="material-icons">unarchive</i>
-              <p>Upgrade to PRO</p>
-            </a>
+            <form action="/logout?_method=DELETE" method="POST">
+              <button  type="submit"  class="btn2" style="padding-left: 25px; padding-right: 25px;">log out</button> 
+            </form>
           </li>
         </ul>
       </div>
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <nav class="navbar navbar-expand-lg  " style="background-color: black;">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
-          </div>
+          
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -154,16 +147,23 @@
         </div> 
       </nav>
       <!-- End Navbar -->
-
+    <div id="properties">
       <div id="users">
-        <h1>Recent Blog Posts</h1>
+        <p id="popup"><% if(messages.error){%>
+          <%= messages.error %>
+          <%} %></p>
+          <form action="/" method="GET">
+            <button  type="submit"  class="btn2 pos">Switch To Basic Mode</button> 
+          </form>
+        <h3 style="margin-left: 15%;">Recently Registered Users</h3>
         <table>
-          <tr>
+          <tr style="background-color: #FF4B2B;">
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
           </tr>
+          <% if(posts.length>0){%>
     <% for(let i = 0; i < posts.length; i++) { %>
           <tr>
             <td><%= posts[i].id %></td>
@@ -172,16 +172,37 @@
             <td><%= posts[i].role %></td>
             <br>
           </tr>
-    <% } %>
+    <% } }%>
       </table>
       </div>
-      <form action="/admin" method="POST">
-        <input type="text" id="inputId" name="inputId" placeholder="ID" required/>
+
+      
+      
+      <div class="rolechange">
+      <form action="/roleChange" method="POST">
+        <h3 style="margin-right:30%;">UpdateRole</h3>
+        <input type="text" id="inputId" name="inputId" placeholder="ID" required/><br>
         <input type="text" id="inputRole" name="inputRole" placeholder="role"/>
-        <button  type="submit" >log out</button> 
+        <br>
+        <button  type="submit" class="btn" >Change Role</button> 
       </form>
+
+      <div class="remove">
+        <form action="/deleteEmployee" method="POST">
+          <h3 style="margin-right:30%;">DeleteRecord</h3>
+          <input type="text" id="inputId" name="inputId" placeholder="ID" required/>
+          <br>
+          <button  type="submit"  class="btn">Delete Employee</button> 
+        </form>
+      </div>
+
+    </div>
+
+     
+  
+     
       
-      
+     
 
 
   <script src="../middleware/adminDb.js"></script>
